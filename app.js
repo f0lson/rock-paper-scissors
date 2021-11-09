@@ -27,7 +27,28 @@ function computerSelection() {
 //  - test playerSelection v computerSelection
 //  - log message with result to console
 function playRound(playerSelection, computerSelection) {
-    console.log(`${playerSelection} v ${computerSelection}`);
+    // test for DRAW
+    if ( playerSelection === computerSelection) {
+        return `DRAW! Nobody wins`
+    }
+    // test for ROCK > SCISSORS
+    if ( playerSelection === `ROCK` && computerSelection === `SCISSORS` ) {
+        return `You WIN! ROCK beats PAPER!`;
+    } else if ( computerSelection === `ROCK` && playerSelection === `SCISSORS` ) {
+        return `You LOSE! ROCK beats PAPER!`;
+    }
+    // test for PAPER > ROCK
+    if ( playerSelection === `PAPER` && computerSelection === `ROCK` ) {
+        return `You WIN! PAPER beats ROCK!`;
+    } else if ( computerSelection === `PAPER` && playerSelection === `ROCK` ) {
+        return `You LOSE! PAPER beats ROCK!`;
+    }
+    // test for SCISSORS > PAPER
+    if ( playerSelection === `SCISSORS` && computerSelection === `PAPER` ) {
+         return `You WIN! SCISSORS beats PAPER!`;
+    } else if ( computerSelection === `SCISSORS` && playerSelection === `PAPER` ) {
+         return `You LOSE! SCISSORS beats PAPER!`;
+    }
 }
 
 // Function to play 5 games | plays 5 total times, keeps score, reports winner at the end
