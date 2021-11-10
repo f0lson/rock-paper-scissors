@@ -29,27 +29,54 @@ function computerSelection() {
 function playRound(playerSelection, computerSelection) {
     // test for DRAW
     if ( playerSelection === computerSelection) {
-        return `DRAW! Nobody wins`
+        console.log(`DRAW!`);
+        return 0;
     }
     // test for ROCK > SCISSORS
     if ( playerSelection === `ROCK` && computerSelection === `SCISSORS` ) {
-        return `You WIN! ROCK beats PAPER!`;
+        console.log(`You WIN! ROCK beats PAPER!`);
+        return 1;
     } else if ( computerSelection === `ROCK` && playerSelection === `SCISSORS` ) {
-        return `You LOSE! ROCK beats PAPER!`;
+        console.log(`You LOSE! ROCK beats PAPER!`);
+        return 2;
     }
     // test for PAPER > ROCK
     if ( playerSelection === `PAPER` && computerSelection === `ROCK` ) {
-        return `You WIN! PAPER beats ROCK!`;
+        console.log(`You WIN! PAPER beats ROCK!`);
+        return 1;
     } else if ( computerSelection === `PAPER` && playerSelection === `ROCK` ) {
-        return `You LOSE! PAPER beats ROCK!`;
+        console.log(`You LOSE! PAPER beats ROCK!`);
+        return 2;
     }
     // test for SCISSORS > PAPER
     if ( playerSelection === `SCISSORS` && computerSelection === `PAPER` ) {
-         return `You WIN! SCISSORS beats PAPER!`;
+        console.log(`You WIN! SCISSORS beats PAPER!`);
+        return 1;
     } else if ( computerSelection === `SCISSORS` && playerSelection === `PAPER` ) {
-         return `You LOSE! SCISSORS beats PAPER!`;
+        console.log(`You LOSE! SCISSORS beats PAPER!`);
+        return 2;
     }
 }
 
 // Function to play 5 games | plays 5 total times, keeps score, reports winner at the end
-
+function game() {
+    let userScore = 0;
+    let compScore = 0;
+    for (let i = 1; i < 6; i++) {
+        let player = playerSelection();
+        let computer = computerSelection();
+        let result = playRound(player, computer);
+        if (result === 1) {
+            userScore++;
+        } else if ( result === 2 ) {
+            compScore++;
+        }
+    }
+    if ( userScore > compScore ) {
+        console.log(`Final score: Player:${userScore} | Computer: ${compScore} -- PLAYER WINS!`);
+    } else if ( compScore > userScore ) {
+        console.log(`Final score: Player:${userScore} | Computer: ${compScore} -- COMPUTER WINS!`);
+    } else {
+        console.log(`WE HAVE A TIE!`);
+    }
+}
