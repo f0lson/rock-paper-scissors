@@ -73,9 +73,9 @@ function game() {
         }
     }
     if ( userScore > compScore ) {
-        console.log(`Final score: Player:${userScore} | Computer: ${compScore} -- PLAYER WINS!`);
+        console.log(`Final score: Player: ${userScore} | Computer: ${compScore} -- PLAYER WINS!`);
     } else if ( compScore > userScore ) {
-        console.log(`Final score: Player:${userScore} | Computer: ${compScore} -- COMPUTER WINS!`);
+        console.log(`Final score: Player: ${userScore} | Computer: ${compScore} -- COMPUTER WINS!`);
     } else {
         console.log(`WE HAVE A TIE!`);
     }
