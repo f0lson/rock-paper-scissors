@@ -58,25 +58,41 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Function to play 5 games | plays 5 total times, keeps score, reports winner at the end
+// FUNCTION
+//  name: print
+//  purpose: print final msg to console once there's a winner
+//  param: userScore, compScore
+function printMsg(userScore, compScore) {
+    if ( userScore > compScore ) {
+        console.log(`Final score: Player: ${userScore} | Computer: ${compScore} -- PLAYER WINS!`);
+    } else if ( compScore > userScore ) {
+        console.log(`Final score: Player: ${userScore} | Computer: ${compScore} -- COMPUTER WINS!`);
+    }    
+}
+
+// Function to play first to win 5 games | reports winner at the end
+// run the game until either the user or comp scores 5 points, once user wins set gameOver to true
+
 function game() {
     let userScore = 0;
     let compScore = 0;
-    for (let i = 1; i < 6; i++) {
+    let gameOver = false;
+    while (!gameOver) {
         let player = playerSelection();
         let computer = computerSelection();
         let result = playRound(player, computer);
         if (result === 1) {
             userScore++;
+            if ( userScore === 5) {
+                gameOver = true;
+                printMsg(userScore, compScore);
+            }
         } else if ( result === 2 ) {
             compScore++;
+            if ( compScore === 5 ) {
+                gameOver = true;
+                printMsg(userScore, compScore);
+            }
         }
-    }
-    if ( userScore > compScore ) {
-        console.log(`Final score: Player: ${userScore} | Computer: ${compScore} -- PLAYER WINS!`);
-    } else if ( compScore > userScore ) {
-        console.log(`Final score: Player: ${userScore} | Computer: ${compScore} -- COMPUTER WINS!`);
-    } else {
-        console.log(`WE HAVE A TIE!`);
     }
 }
